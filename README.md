@@ -1,4 +1,4 @@
-# beyond semanic features: pixel-level mapping for general AI-generated image detection
+# 1. beyond semanic features: pixel-level mapping for general AI-generated image detection
 
 ### 对输入图像进行二分类任务以判断其是否是生成模型合成的
 训练好的分类器分别需要满足
@@ -36,7 +36,7 @@
 #### 最后性能的话
     在GenImage数据集上，固定映射平均准确率达98.4%，超过C2P-CLIP（95.8%）和UnivFD（88.8%），验证了泛化能力提升
 
-# breaking latent prior bias in detectors for generalizable AIGC image detection
+# 2. breaking latent prior bias in detectors for generalizable AIGC image detection
 #### 思想
 当前的AIGC检测器在他们的training generator生成的的图像上表现良好，但是面对没有见过的generative architecture的时候就会表现出明显的表现下降
 具体的思想是，固定generator和prompt text，然后让generator生成伪造图像，每一步都用baseline detector进行检测，然后当满足50%以下的标准(也就是错误识别该图片为真)，就保存该图片; 这种方式被称为了流形上对抗训练On-manifold adversarial training(OMAT),以此的话能够更快的学到真正的的robust features.而不是learning short-cut
